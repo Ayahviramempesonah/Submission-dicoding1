@@ -20,7 +20,7 @@ class MainActivity : AppCompatActivity() {
 
 
 
-        rvUser = findViewById(R.id.row_user)
+        rvUser = findViewById(R.id.rc_user)
         rvUser.setHasFixedSize(true)
 
         list.addAll(listUseres)

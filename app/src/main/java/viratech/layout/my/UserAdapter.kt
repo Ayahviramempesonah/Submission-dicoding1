@@ -40,8 +40,8 @@ class UserAdapter (private val listUser: ArrayList<User>) : RecyclerView.Adapter
         val (name,description,photo) = listUser[position]
 
         holder.imgPhoto.setImageResource(photo)
-        holder.tvDetail.text=description
-        holder.tvName.text=name
+        holder.tvDetail.text= "@"+description
+        holder.tvName.text= name
 
 
 
@@ -58,3 +58,8 @@ class UserAdapter (private val listUser: ArrayList<User>) : RecyclerView.Adapter
 
     }
 }
+
+
+
+
+// backup github
