@@ -1,7 +1,9 @@
 package viratech.layout.my
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.WindowManager
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -51,9 +53,28 @@ class MainActivity : AppCompatActivity() {
         rvUser.layoutManager = LinearLayoutManager(this)
         val listUserAdapter = UserAdapter(list)
         rvUser.adapter = listUserAdapter
+                        // error disini setOnItemClickCallback
+        UserAdapter.setOnItemClickCallback(object :UserAdapter.OnItemCLickCallback{
+            override fun onItemClicked(data: User) {
+                showSelect(data)
+            }
+        })
+
 
 
     }
 
+    private fun showSelect(kepo:User){
+Toast.makeText(this,"kamu memilih"+kepo.name,Toast.LENGTH_SHORT).show()
+
+
+        val intent=Intent(this,HalmanDetail::class.java)
+
+        intent.putExtra("Name",kepo.name)
+        intent.putExtra("PHOTO",kepo.photo)
+        intent.putExtra("Desc",kepo.description)
+        startActivity(intent)
+
+    }
 
 }
