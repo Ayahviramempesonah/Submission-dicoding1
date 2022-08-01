@@ -11,7 +11,7 @@ import androidx.recyclerview.widget.RecyclerView
 class MainActivity : AppCompatActivity() {
 
     private lateinit var rvUser: RecyclerView
-    private val list = ArrayList<User>()
+    private val list = ArrayList<User> ()
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -32,7 +32,7 @@ class MainActivity : AppCompatActivity() {
     }
 
 
-    private val listUseres: ArrayList<User>
+   private val listUseres: ArrayList<User>
         get() {
 
             val dataname = resources.getStringArray(R.array.name)
@@ -53,12 +53,12 @@ class MainActivity : AppCompatActivity() {
         rvUser.layoutManager = LinearLayoutManager(this)
         val listUserAdapter = UserAdapter(list)
         rvUser.adapter = listUserAdapter
-                        // error disini setOnItemClickCallback
-        UserAdapter.setOnItemClickCallback(object :UserAdapter.OnItemCLickCallback{
-            override fun onItemClicked(data: User) {
-                showSelect(data)
-            }
-        })
+                        // error disini setOnItemClickCallback .setOnItemClickCallback
+   //   UserAdapter(object :UserAdapter.OnItemClickCallback{
+   //         override fun onItemClicked(data: User) {
+    //            showSelect(data)
+     //       }
+     //   } )
 
 
 
@@ -68,7 +68,7 @@ class MainActivity : AppCompatActivity() {
 Toast.makeText(this,"kamu memilih"+kepo.name,Toast.LENGTH_SHORT).show()
 
 
-        val intent=Intent(this,HalmanDetail::class.java)
+        val intent=Intent(this@MainActivity,HalmanDetail::class.java)
 
         intent.putExtra("Name",kepo.name)
         intent.putExtra("PHOTO",kepo.photo)
