@@ -54,11 +54,11 @@ class MainActivity : AppCompatActivity() {
         val listUserAdapter = UserAdapter(list)
         rvUser.adapter = listUserAdapter
                         // error disini setOnItemClickCallback .setOnItemClickCallback
-   //   UserAdapter(object :UserAdapter.OnItemClickCallback{
-   //         override fun onItemClicked(data: User) {
-    //            showSelect(data)
-     //       }
-     //   } )
+     listUserAdapter.setOnItemClickCallback(object :UserAdapter.OnItemClickCallback{
+          override fun onItemClicked(data: User) {
+              showSelect(data)
+           }
+       } )
 
 
 
@@ -68,7 +68,7 @@ class MainActivity : AppCompatActivity() {
 Toast.makeText(this,"kamu memilih"+kepo.name,Toast.LENGTH_SHORT).show()
 
 
-        val intent=Intent(this@MainActivity,HalmanDetail::class.java)
+        val intent=Intent(this,HalmanDetail::class.java)
 
         intent.putExtra("Name",kepo.name)
         intent.putExtra("PHOTO",kepo.photo)

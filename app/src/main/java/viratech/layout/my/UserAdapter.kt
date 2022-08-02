@@ -27,9 +27,11 @@ class UserAdapter(private val listUser: ArrayList<User>) : RecyclerView.Adapter<
 
 
 
-   class ListViewholder(var binding : RowUserBinding ) : RecyclerView.ViewHolder(binding.root) {
+   class ListViewholder(itemView:View):RecyclerView.ViewHolder(itemView) {
 
-
+var imgPhoto:ImageView=itemView.findViewById(R.id.imageView)
+    var tvName:TextView=itemView.findViewById(R.id.textView_name)
+        var tvDetail:TextView=itemView.findViewById(R.id.textView_detail)
 
 
    }
@@ -37,17 +39,14 @@ class UserAdapter(private val listUser: ArrayList<User>) : RecyclerView.Adapter<
 
 
 
-     //  var imgPhoto: ImageView = itemView.findViewById(R.id.imageView)
-       // var tvName: TextView = itemView.findViewById(R.id.textView_name)
-        //var tvDetail: TextView = itemView.findViewById(R.id.textView_detail)
 
 
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ListViewholder {
 
-        val binding = RowUserBinding.inflate(LayoutInflater.from(parent.context),parent,false)
-        return ListViewholder(binding)
+        val view =LayoutInflater.from(parent.context).inflate(R.layout.row_user,parent,false)
+        return ListViewholder(view)
         Log.i(TAG,"erorr dsini")
     }
 
@@ -57,17 +56,15 @@ class UserAdapter(private val listUser: ArrayList<User>) : RecyclerView.Adapter<
     @SuppressLint("SetTextI18n")
     override fun onBindViewHolder(holder: ListViewholder, position: Int) {
 
-val uses= listUser [position]
+val (name,description,photo) =listUser[position]
 
-       val pho=listUser[position].photo
-     //   holder.itemView.setOnClickListener {
-       //     onItemClickCallback.onItemClicked(listUser[holder.adapterPosition])
-       // }
-
-
-
-
-
+holder.imgPhoto.setImageResource(photo)
+        holder.tvDetail.text="@"+description
+        holder.tvName.text=name
+Log.i(TAG,"error dsini")
+        holder.itemView.setOnClickListener {
+            listUser[holder.adapterPosition]
+        }
 
     }
 
