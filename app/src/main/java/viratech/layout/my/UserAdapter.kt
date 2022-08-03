@@ -47,13 +47,12 @@ var imgPhoto:ImageView=itemView.findViewById(R.id.imageView)
 
         val view =LayoutInflater.from(parent.context).inflate(R.layout.row_user,parent,false)
         return ListViewholder(view)
-        Log.i(TAG,"erorr dsini")
     }
 
     override fun getItemCount(): Int = listUser.size
 
 
-    @SuppressLint("SetTextI18n")
+   // @SuppressLint("SetTextI18n")
     override fun onBindViewHolder(holder: ListViewholder, position: Int) {
 
 val (name,description,photo) =listUser[position]
@@ -61,9 +60,8 @@ val (name,description,photo) =listUser[position]
 holder.imgPhoto.setImageResource(photo)
         holder.tvDetail.text="@"+description
         holder.tvName.text=name
-Log.i(TAG,"error dsini")
-        holder.itemView.setOnClickListener {
-            listUser[holder.adapterPosition]
+        holder.itemView.setOnClickListener {onItemClickCallback.onItemClicked(listUser[holder.adapterPosition])
+
         }
 
     }
