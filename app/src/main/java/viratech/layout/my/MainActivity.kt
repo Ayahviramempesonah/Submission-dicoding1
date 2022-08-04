@@ -53,7 +53,7 @@ class MainActivity : AppCompatActivity() {
         rvUser.layoutManager = LinearLayoutManager(this)
         val listUserAdapter = UserAdapter(list)
         rvUser.adapter = listUserAdapter
-                        // error disini setOnItemClickCallback .setOnItemClickCallback
+
      listUserAdapter.setOnItemClickCallback(object :UserAdapter.OnItemClickCallback{
           override fun onItemClicked(data: User) {
               showSelect(data)
@@ -65,12 +65,12 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun showSelect(kepo:User){
-Toast.makeText(this,"kamu memilih"+kepo.name,Toast.LENGTH_SHORT).show()
+Toast.makeText(this,"kamu memilih "+ kepo.name,Toast.LENGTH_SHORT).show()
 
 
         val intent=Intent(this,HalmanDetail::class.java)
-
-        intent.putExtra("Name",kepo.name)
+//intent.putExtra("voo",null)
+       intent.putExtra("Name",kepo.name)
         intent.putExtra("PHOTO",kepo.photo)
         intent.putExtra("Desc",kepo.description)
         startActivity(intent)
