@@ -2,27 +2,34 @@ package viratech.layout.my
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.LayoutInflater
 import android.widget.ImageView
 import android.widget.TextView
+import viratech.layout.my.databinding.ActivityHalmanDetailBinding
 
 class HalmanDetail : AppCompatActivity() {
+        private lateinit var binding:ActivityHalmanDetailBinding
+
+    companion object {
+        const val EXTRA_USER = "extra_user"
+    }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_halman_detail)
+
+        binding= ActivityHalmanDetailBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+
+
+            val data=intent.getParcelableExtra<User>(EXTRA_USER) as User
+
+            binding.apply {
+               circleImageView .setImageResource(data.photo)
+                textView.text=data.name
+                textView2.text=    "@"+data.description
+            }
 
 
 
 
-      val tvUserName=  findViewById<TextView>(R.id.textView)
-        val tvPhoto=  findViewById<ImageView>(R.id.circleImageView)
-       val tvNameDetail=  findViewById<TextView>(R.id.textView2)
-
-
-       val name =intent.getStringExtra("Name")
-        val icon = intent.getIntExtra("PHOTO",0)
-       val desc= intent.getStringExtra("Desc")
-     tvPhoto.setImageResource(icon)
-       tvUserName.text =  "NAMA= "+name
-       tvNameDetail.text= "USERNAME= " + "@"+desc
     }
 }

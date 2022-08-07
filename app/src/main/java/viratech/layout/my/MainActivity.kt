@@ -68,11 +68,10 @@ class MainActivity : AppCompatActivity() {
 Toast.makeText(this,"kamu memilih "+ kepo.name,Toast.LENGTH_SHORT).show()
 
 
-        val intent=Intent(this,HalmanDetail::class.java)
-//intent.putExtra("voo",null)
-       intent.putExtra("Name",kepo.name)
-        intent.putExtra("PHOTO",kepo.photo)
-        intent.putExtra("Desc",kepo.description)
+        val intent =Intent(this@MainActivity,HalmanDetail::class.java)
+                intent.putExtra(HalmanDetail.EXTRA_USER,kepo)
+
+
         startActivity(intent)
 
     }
